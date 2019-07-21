@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class shot2 extends AppCompatActivity {
 
     Button btn01,btn02;
-
+    public int status = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,7 @@ public class shot2 extends AppCompatActivity {
                     //인증샷올리기 누르면 팝업창이 뜨게 됨. 업로드 부분 추가해야함.
                     case R.id.button1:
                         Intent intent = new Intent(shot2.this, popup.class);
+                        intent.putExtra("next",2);
                         startActivityForResult(intent, 1);
 
                         break;

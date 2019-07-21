@@ -5,15 +5,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
-import static java.lang.StrictMath.abs;
 
 public class TouchListener implements View.OnTouchListener {
     private float xDelta;
     private float yDelta;
+    private puzzle2 activity;
+
+    public TouchListener(puzzle2 activity) {
+        this.activity = activity;
+    }
 
 
+    @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         float x = motionEvent.getRawX();
         float y = motionEvent.getRawY();
@@ -23,7 +29,6 @@ public class TouchListener implements View.OnTouchListener {
         if (!piece.canMove) {
             return true;
         }
-
         RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
@@ -36,22 +41,25 @@ public class TouchListener implements View.OnTouchListener {
                 lParams.topMargin = (int) (y - yDelta);
                 view.setLayoutParams(lParams);
                 break;
+
             case MotionEvent.ACTION_UP:
                 int xDiff = abs(piece.xCoord - lParams.leftMargin);
                 int yDiff = abs(piece.yCoord - lParams.topMargin);
                 if (xDiff <= tolerance && yDiff <= tolerance) {
+
                     lParams.leftMargin = piece.xCoord;
                     lParams.topMargin = piece.yCoord;
+
                     piece.setLayoutParams(lParams);
                     piece.canMove = false;
                     sendViewToBack(piece);
+                    activity.checkGameOver();
                 }
                 break;
         }
 
         return true;
     }
-
     public void sendViewToBack(final View child) {
         final ViewGroup parent = (ViewGroup)child.getParent();
         if (null != parent) {

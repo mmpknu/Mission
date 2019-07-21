@@ -62,7 +62,8 @@
         android:background="@drawable/botton"
         android:text="퍼즐 촬영"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:onClick="onImageFromCameraClick"/>
 
     <Space
         android:layout_width="match_parent"

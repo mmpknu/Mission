@@ -52,18 +52,9 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),puzzle2.class);
+                Intent intent=new Intent(getApplicationContext(),puzzle.class);
                 startActivity(intent);
 
-            }
-        });
-
-        Button button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=  new Intent(getApplicationContext(),typing.class);
-                startActivity(intent);
             }
         });
 

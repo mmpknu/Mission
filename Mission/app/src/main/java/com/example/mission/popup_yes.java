@@ -23,6 +23,7 @@ public class popup_yes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),popup.class);
+                intent.putExtra("next",4);
                 startActivity(intent);
 
             }
