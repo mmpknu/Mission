@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //버튼4는 puzzle
-        Button button4 =(Button) findViewById(R.id.button4);
+        Button button4 = (Button)findViewById(R.id.button4);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //버튼5는 typing
+        Button button5 = (Button)findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),typing.class);
+                startActivity(intent);
 
+            }
+        });
     }
 }
